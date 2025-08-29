@@ -205,6 +205,59 @@ export default function Home() {
         </div>
       </nav>
 
+
+          {/* ETP Carousel */}
+          <div className="">
+              <div className="relative">
+                <div className="overflow-hidden rounded-lg shadow-xl">
+                  <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentETPSlide * 100}%)` }}>
+                    {etpImages.map((image, index) => (
+                      <div key={index} className="w-full flex-shrink-0">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={800}
+                          height={500}
+                          className={image.className}
+                          unoptimized
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Carousel Navigation Buttons */}
+                <button
+                  onClick={prevETPSlide}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  aria-label="Previous slide"
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
+                </button>
+                <button
+                  onClick={nextETPSlide}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  aria-label="Next slide"
+                >
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xl" />
+                </button>
+
+                {/* Carousel Indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {etpImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentETPSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentETPSlide ? 'bg-secondary' : 'bg-white/60'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
                   {/* Hero Section */}
       <section id="home" className="relative bg-gradient-to-br from-primary via-primary-light to-accent text-white">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -232,7 +285,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <Image
-                src="/factory-exterior.png"
+                src="/1.png"
                 alt="Chandra Coaters Factory"
                 width={600}
                 height={400}
@@ -346,7 +399,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/1.png"
+                  src="/part1.png"
                   alt="Industrial Part 1"
                   width={400}
                   height={300}
@@ -356,7 +409,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/2.png"
+                  src="/part2.png"
                   alt="Industrial Part 2"
                   width={400}
                   height={300}
@@ -366,7 +419,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/3.png"
+                  src="/part3.png"
                   alt="Industrial Part 3"
                   width={400}
                   height={300}
@@ -376,7 +429,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/4.png"
+                  src="/part4.png"
                   alt="Industrial Part 4"
                   width={400}
                   height={300}
@@ -386,7 +439,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/5.png"
+                  src="/part5.png"
                   alt="Industrial Part 5"
                   width={400}
                   height={300}
@@ -396,7 +449,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/6.png"
+                  src="/part6.png"
                   alt="Industrial Part 6"
                   width={400}
                   height={300}
@@ -419,54 +472,28 @@ export default function Home() {
               <div className="w-24 h-1 bg-secondary mx-auto"></div>
             </div>
 
-            {/* ETP Carousel */}
+            {/* ETP Images Display */}
             <div className="mb-12">
-              <div className="relative">
-                <div className="overflow-hidden rounded-lg shadow-xl">
-                  <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentETPSlide * 100}%)` }}>
-                    {etpImages.map((image, index) => (
-                      <div key={index} className="w-full flex-shrink-0">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={800}
-                          height={500}
-                          className={image.className}
-                          unoptimized
-                        />
-                      </div>
-                    ))}
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                  <Image
+                    src="/etp1.png"
+                    alt="ETP Plant 1"
+                    width={600}
+                    height={400}
+                    className="w-full h-80 object-contain rounded-lg"
+                    unoptimized
+                  />
                 </div>
-                
-                {/* Carousel Navigation Buttons */}
-                <button
-                  onClick={prevETPSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
-                  aria-label="Previous slide"
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
-                </button>
-                <button
-                  onClick={nextETPSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
-                  aria-label="Next slide"
-                >
-                  <FontAwesomeIcon icon={faChevronRight} className="text-xl" />
-                </button>
-
-                {/* Carousel Indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {etpImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentETPSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentETPSlide ? 'bg-secondary' : 'bg-white/60'
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                  <Image
+                    src="/etp1.png"
+                    alt="ETP Plant 2"
+                    width={600}
+                    height={400}
+                    className="w-full h-80 object-contain rounded-lg"
+                    unoptimized
+                  />
                 </div>
               </div>
             </div>
@@ -533,31 +560,31 @@ export default function Home() {
                   <div className="text-accent text-4xl mb-4">
                     <FontAwesomeIcon icon={faIndustry} />
                   </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">Textile & Dyeing</h4>
+                  <h4 className="text-lg font-semibold text-white mb-2">Textile & Dyeing</h4>
                 </div>
                 <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
                   <div className="text-accent text-4xl mb-4">
                     <FontAwesomeIcon icon={faFlask} />
                   </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">Chemical & Pharmaceutical</h4>
+                  <h4 className="text-lg font-semibold text-white mb-2">Chemical & Pharmaceutical</h4>
                 </div>
                 <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
                   <div className="text-accent text-4xl mb-4">
                     <FontAwesomeIcon icon={faSeedling} />
                   </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">Food & Beverage</h4>
+                  <h4 className="text-lg font-semibold text-white mb-2">Food & Beverage</h4>
                 </div>
                 <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
                   <div className="text-accent text-4xl mb-4">
                     <FontAwesomeIcon icon={faLeaf} />
                   </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">Paper & Pulp</h4>
+                  <h4 className="text-lg font-semibold text-white mb-2">Paper & Pulp</h4>
                 </div>
                 <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
                   <div className="text-accent text-4xl mb-4">
                     <FontAwesomeIcon icon={faCar} />
                   </div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">Automotive & Metal Finishing</h4>
+                  <h4 className="text-lg font-semibold text-white mb-2">Automotive & Metal Finishing</h4>
                 </div>
               </div>
             </div>
