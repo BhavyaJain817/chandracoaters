@@ -26,7 +26,9 @@ import {
   faUserTie,
   faClipboardCheck,
   faBars,
-  faTimes
+  faTimes,
+  faChevronLeft,
+  faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
@@ -38,6 +40,25 @@ export default function Home() {
   });
   const [showThankYou, setShowThankYou] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentETPSlide, setCurrentETPSlide] = useState(0);
+
+  const etpImages = [
+    { src: "/1.png", alt: "ETP Plant 1", className: "w-full h-96 object-contain" },
+    { src: "/2.png", alt: "ETP Plant 2", className: "w-full h-96 object-contain" },
+    { src: "/3.png", alt: "ETP Plant 3", className: "w-full h-96 object-contain" },
+    { src: "/4.png", alt: "ETP Plant 4", className: "w-full h-96 object-contain" },
+    { src: "/5.png", alt: "ETP Plant 5", className: "w-full h-96 object-contain" },
+    { src: "/6.png", alt: "ETP Plant 6", className: "w-full h-96 object-contain" },
+    { src: "/7.jpg", alt: "ETP Plant 7", className: "w-full h-96 object-contain" }
+  ];
+
+  const nextETPSlide = () => {
+    setCurrentETPSlide((prev) => (prev + 1) % etpImages.length);
+  };
+
+  const prevETPSlide = () => {
+    setCurrentETPSlide((prev) => (prev - 1 + etpImages.length) % etpImages.length);
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -200,12 +221,13 @@ export default function Home() {
                 world-class quality and customer satisfaction every time.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-secondary text-white font-semibold py-3 px-8 rounded-lg hover:bg-secondary-light transition-colors shadow-lg">
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-secondary text-white font-semibold py-3 px-8 rounded-lg hover:bg-secondary-light transition-colors shadow-lg"
+                >
                   Get Quote
                 </button>
-                <button className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-primary transition-colors">
-                  Learn More
-                </button>
+                
               </div>
             </div>
             <div className="relative">
@@ -324,7 +346,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/part1.png"
+                  src="/1.png"
                   alt="Industrial Part 1"
                   width={400}
                   height={300}
@@ -334,7 +356,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/part2.png"
+                  src="/2.png"
                   alt="Industrial Part 2"
                   width={400}
                   height={300}
@@ -344,7 +366,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <Image
-                  src="/part3.png"
+                  src="/3.png"
                   alt="Industrial Part 3"
                   width={400}
                   height={300}
@@ -354,7 +376,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/part4.png"
+                  src="/4.png"
                   alt="Industrial Part 4"
                   width={400}
                   height={300}
@@ -364,7 +386,7 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/part5.png"
+                  src="/5.png"
                   alt="Industrial Part 5"
                   width={400}
                   height={300}
@@ -374,13 +396,169 @@ export default function Home() {
               </div>
               <div className="bg-white p-4 rounded-lg shadow-lg">
           <Image
-                  src="/part6.png"
+                  src="/6.png"
                   alt="Industrial Part 6"
                   width={400}
                   height={300}
                   className="rounded-lg w-full"
                   unoptimized
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ETP Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
+                <FontAwesomeIcon icon={faIndustry} className="mr-2" />
+                ETP = Effluent Treatment Plant
+              </h2>
+              <div className="w-24 h-1 bg-secondary mx-auto"></div>
+            </div>
+
+            {/* ETP Carousel */}
+            <div className="mb-12">
+              <div className="relative">
+                <div className="overflow-hidden rounded-lg shadow-xl">
+                  <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentETPSlide * 100}%)` }}>
+                    {etpImages.map((image, index) => (
+                      <div key={index} className="w-full flex-shrink-0">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={800}
+                          height={500}
+                          className={image.className}
+                          unoptimized
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Carousel Navigation Buttons */}
+                <button
+                  onClick={prevETPSlide}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  aria-label="Previous slide"
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
+                </button>
+                <button
+                  onClick={nextETPSlide}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  aria-label="Next slide"
+                >
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xl" />
+                </button>
+
+                {/* Carousel Indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {etpImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentETPSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentETPSlide ? 'bg-secondary' : 'bg-white/60'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ETP Information */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* What is ETP */}
+              <div className="bg-neutral-light p-8 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-bold text-primary mb-6 flex items-center">
+                  <span className="text-3xl mr-3">🔹</span>
+                  What is an ETP Plant?
+                </h3>
+                <p className="text-neutral-dark leading-relaxed mb-4">
+                  An Effluent Treatment Plant (ETP) is a facility used to treat wastewater and industrial effluents before they are discharged into the environment or reused.
+                </p>
+                <p className="text-neutral-dark leading-relaxed">
+                  It removes harmful chemicals, solids, and toxins to ensure the water meets environmental safety standards.
+                </p>
+              </div>
+
+              {/* Main Benefits */}
+              <div className="bg-neutral-light p-8 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-bold text-primary mb-6 flex items-center">
+                  <span className="text-3xl mr-3">🔹</span>
+                  Main Benefits of an ETP Plant
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Environmental Protection</strong> – Prevents water pollution by treating harmful industrial wastewater.</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Regulatory Compliance</strong> – Helps industries meet government norms (CPCB/SPCB standards in India).</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Water Reuse</strong> – Treated water can be reused for gardening, cooling towers, or other non-potable purposes.</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Reduces Health Hazards</strong> – Minimizes exposure to toxic effluents that harm humans and animals.</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Cost Savings</strong> – Reduces water procurement costs by recycling treated water.</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-secondary mr-3 mt-1">✅</span>
+                    <span className="text-neutral-dark"><strong>Sustainable Operations</strong> – Supports industries in achieving sustainability and green certifications.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Common Industries */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-primary mb-8 text-center">
+                <span className="text-3xl mr-3">🔹</span>
+                Common Industries Using ETP
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
+                  <div className="text-accent text-4xl mb-4">
+                    <FontAwesomeIcon icon={faIndustry} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Textile & Dyeing</h4>
+                </div>
+                <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
+                  <div className="text-accent text-4xl mb-4">
+                    <FontAwesomeIcon icon={faFlask} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Chemical & Pharmaceutical</h4>
+                </div>
+                <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
+                  <div className="text-accent text-4xl mb-4">
+                    <FontAwesomeIcon icon={faSeedling} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Food & Beverage</h4>
+                </div>
+                <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
+                  <div className="text-accent text-4xl mb-4">
+                    <FontAwesomeIcon icon={faLeaf} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Paper & Pulp</h4>
+                </div>
+                <div className="bg-neutral-light p-6 rounded-lg shadow-lg text-center">
+                  <div className="text-accent text-4xl mb-4">
+                    <FontAwesomeIcon icon={faCar} />
+                  </div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Automotive & Metal Finishing</h4>
+                </div>
               </div>
             </div>
           </div>
@@ -634,12 +812,8 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
-                    <span className="text-black">Monday - Friday</span>
+                    <span className="text-black">Monday - Saturday</span>
                     <span className="font-semibold text-primary">8:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
-                    <span className="text-black">Saturday</span>
-                    <span className="font-semibold text-primary">8:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
                     <span className="text-black">Sunday</span>
