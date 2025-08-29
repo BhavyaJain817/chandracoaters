@@ -39,6 +39,16 @@ export default function Home() {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -62,7 +72,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-primary text-white shadow-lg sticky top-0 z-50">
+      <nav className="bg-white text-black shadow-lg sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -71,7 +81,7 @@ export default function Home() {
                 alt="Chandra Coaters Logo"
                 width={180}
                 height={60}
-                className="h-12 w-auto"
+                className="h-26 w-auto"
                 priority
                 unoptimized
               />
@@ -80,30 +90,30 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#home" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                <button onClick={() => scrollToSection('home')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faBuilding} className="mr-1" />
                   Home
-                </a>
-                <a href="#about" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                </button>
+                <button onClick={() => scrollToSection('about')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faUsers} className="mr-1" />
                   About
-                </a>
-                <a href="#services" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                </button>
+                <button onClick={() => scrollToSection('benefits')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faIndustry} className="mr-1" />
                   Services
-                </a>
-                <a href="#why-choose-us" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                </button>
+                <button onClick={() => scrollToSection('why-choose-us')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faAward} className="mr-1" />
                   Why Choose Us
-                </a>
-                <a href="#industries" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                </button>
+                <button onClick={() => scrollToSection('industries')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faCog} className="mr-1" />
                   Industries
-                </a>
-                <a href="#contact" className="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center text-black">
                   <FontAwesomeIcon icon={faPhone} className="mr-1" />
                   Contact
-                </a>
+                </button>
               </div>
             </div>
 
@@ -111,7 +121,7 @@ export default function Home() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-secondary hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
@@ -126,69 +136,64 @@ export default function Home() {
 
           {/* Mobile Navigation Menu */}
           <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-primary border-t border-primary-light">
-              <a 
-                href="#home" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+              <button 
+                onClick={() => { scrollToSection('home'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faBuilding} className="mr-3" />
                 Home
-              </a>
-              <a 
-                href="#about" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faUsers} className="mr-3" />
                 About
-              </a>
-              <a 
-                href="#services" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => { scrollToSection('benefits'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faIndustry} className="mr-3" />
                 Services
-              </a>
-              <a 
-                href="#why-choose-us" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => { scrollToSection('why-choose-us'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faAward} className="mr-3" />
                 Why Choose Us
-              </a>
-              <a 
-                href="#industries" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => { scrollToSection('industries'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faCog} className="mr-3" />
                 Industries
-              </a>
-              <a 
-                href="#contact" 
-                className="hover:text-secondary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
+                className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
               >
                 <FontAwesomeIcon icon={faPhone} className="mr-3" />
                 Contact
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
-            {/* Hero Section */}
-      <section id="home" className="relative bg-white text-neutral-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                  {/* Hero Section */}
+      <section id="home" className="relative bg-gradient-to-br from-primary via-primary-light to-accent text-white">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black font-heading">
-                Chandra Coaters – <span className="text-black">Premium CED Coating Services</span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white font-heading">
+                Chandra Coaters – <span className="text-secondary">Premium CED Coating Services</span>
               </h1>
-              <p className="text-xl mb-8 leading-relaxed text-black">
+              <p className="text-xl mb-8 leading-relaxed text-white">
                 At Chandra Coaters, we specialize in CED (Cathodic Electro-Deposition) Coating, 
                 a modern, eco-friendly solution for protecting and enhancing metal components. 
                 Our advanced facility, skilled team, and dedication to excellence ensure 
@@ -198,19 +203,19 @@ export default function Home() {
                 <button className="bg-secondary text-white font-semibold py-3 px-8 rounded-lg hover:bg-secondary-light transition-colors shadow-lg">
                   Get Quote
                 </button>
-                <button className="border-2 border-primary text-primary font-semibold py-3 px-8 rounded-lg transition-colors">
+                <button className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-primary transition-colors">
                   Learn More
                 </button>
               </div>
             </div>
             <div className="relative">
-        <Image
+              <Image
                 src="/factory-exterior.png"
                 alt="Chandra Coaters Factory"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
-          priority
+                priority
                 unoptimized
               />
             </div>
@@ -439,7 +444,7 @@ export default function Home() {
               </section>
 
         {/* Benefits of ED-Coating Section */}
-        <section className="py-16 bg-neutral-light">
+        <section id="benefits" className="py-16 bg-neutral-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
@@ -629,15 +634,15 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
-                    <span className="text-neutral-dark">Monday - Friday</span>
+                    <span className="text-black">Monday - Friday</span>
                     <span className="font-semibold text-primary">8:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
-                    <span className="text-neutral-dark">Saturday</span>
+                    <span className="text-black">Saturday</span>
                     <span className="font-semibold text-primary">8:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-neutral-200">
-                    <span className="text-neutral-dark">Sunday</span>
+                    <span className="text-black">Sunday</span>
                     <span className="font-semibold text-primary">Closed</span>
                   </div>
                 </div>
@@ -757,7 +762,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-secondary mb-4">Chandra Coaters</h3>
+              <Image
+                src="/logo.png"
+                alt="Chandra Coaters Logo"
+                width={180}
+                height={60}
+                className="h-26 w-auto"
+                priority
+                unoptimized
+              />
               <p className="text-neutral-light mb-4">
                 Leading provider of CED coating solutions for automotive and industrial applications.
               </p>
