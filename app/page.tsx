@@ -172,26 +172,25 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative bg-gradient-to-r from-primary to-primary-light text-white">
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            {/* Hero Section */}
+      <section id="home" className="relative bg-white text-neutral-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Chandra Coaters – <span className="text-secondary">Premium CED Coating Services</span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black">
+                Chandra Coaters – <span className="text-black">Premium CED Coating Services</span>
               </h1>
-              <p className="text-xl mb-8 leading-relaxed">
+              <p className="text-xl mb-8 leading-relaxed text-black">
                 At Chandra Coaters, we specialize in CED (Cathodic Electro-Deposition) Coating, 
                 a modern, eco-friendly solution for protecting and enhancing metal components. 
                 Our advanced facility, skilled team, and dedication to excellence ensure 
                 world-class quality and customer satisfaction every time.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-secondary text-primary font-semibold py-3 px-8 rounded-lg hover:bg-secondary-light transition-colors">
+                <button className="bg-secondary text-white font-semibold py-3 px-8 rounded-lg hover:bg-secondary-light transition-colors shadow-lg">
                   Get Quote
                 </button>
-                <button className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-primary transition-colors">
+                <button className="border-2 border-primary text-primary font-semibold py-3 px-8 rounded-lg transition-colors">
                   Learn More
                 </button>
               </div>
