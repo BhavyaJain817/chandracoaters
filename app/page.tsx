@@ -43,7 +43,6 @@ export default function Home() {
   const [currentETPSlide, setCurrentETPSlide] = useState(0);
 
   const etpImages = [
-    { src: "/1.png", alt: "ETP Plant 1", className: "w-full h-96 object-contain" },
     { src: "/3.png", alt: "ETP Plant 3", className: "w-full h-96 object-contain" },
     { src: "/4.png", alt: "ETP Plant 4", className: "w-full h-96 object-contain" },
     { src: "/5.png", alt: "ETP Plant 5", className: "w-full h-96 object-contain" },

@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@next/font'],
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: 'https://www.chandracoaters.in',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
