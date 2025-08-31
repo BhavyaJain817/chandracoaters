@@ -1051,11 +1051,7 @@ export default function Home() {
               <p className="text-neutral-light mb-4">
                 Leading provider of CED coating solutions for automotive and industrial applications.
               </p>
-              <div className="flex space-x-4">
-                <FontAwesomeIcon icon={faEnvelope} className="text-secondary" />
-                <FontAwesomeIcon icon={faPhone} className="text-secondary" />
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-secondary" />
-              </div>
+              
             </div>
             <div>
               <h4 className="text-lg font-semibold text-secondary mb-4">Services</h4>
