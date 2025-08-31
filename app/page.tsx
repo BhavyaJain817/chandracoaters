@@ -807,7 +807,7 @@ export default function Home() {
                     <div>
                       <p className="font-semibold text-neutral-dark mb-1">Location</p>
                       <p className="text-neutral-dark">G-1 263 RIICO INDUSTRIAL AREA, KHUSKHERA</p>
-                      <p className="text-neutral-dark">Pin Code: 301017</p>
+                      <p className="text-neutral-dark">Pin Code: 301707</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4 group">
@@ -937,6 +937,42 @@ export default function Home() {
                   </span>
                 </button>
               </form>
+            </div>
+          </div>
+
+          {/* Full Width Map Section */}
+          <div className="mt-12">
+            <div className="bg-neutral-light p-8 rounded-2xl shadow-xl border border-neutral-200">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style={{ backgroundColor: '#202938' }}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-2xl text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary">Our Location</h3>
+              </div>
+              <div className="overflow-hidden rounded-xl shadow-lg">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3518.7027756571474!2d76.8017263752696!3d28.125086575945748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d4b98a1e9d40d%3A0xf4136513a77c2ada!2sChandra%20Coaters!5e0!3m2!1sen!2sin!4v1756626481816!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="450" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Chandra Coaters Location"
+                  className="w-full"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <a 
+                  href="https://www.google.com/maps/place/Chandra+Coaters/@28.1250866,76.8017264,17z/data=!3m1!4b1!4m6!3m5!1s0x390d4b98a1e9d40d:0xf4136513a77c2ada!2sChandra+Coaters!8m2!3d28.1250866!4d76.8017264" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary font-semibold hover:underline transition-colors"
+                >
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  Open in Google Maps
+                </a>
+              </div>
             </div>
           </div>
 
