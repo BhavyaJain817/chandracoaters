@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { db } from './lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useAuth } from './contexts/AuthContext';
 import { 
   faPhone, 
   faEnvelope, 
@@ -28,10 +31,12 @@ import {
   faBars,
   faTimes,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faTachometerAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -41,8 +46,10 @@ export default function Home() {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentETPSlide, setCurrentETPSlide] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const etpImages = [
+    { src: "/1.png", alt: "ETP Plant 1", className: "w-full h-96 object-contain" },
     { src: "/3.png", alt: "ETP Plant 3", className: "w-full h-96 object-contain" },
     { src: "/4.png", alt: "ETP Plant 4", className: "w-full h-96 object-contain" },
     { src: "/5.png", alt: "ETP Plant 5", className: "w-full h-96 object-contain" },
@@ -76,17 +83,39 @@ export default function Home() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    setShowThankYou(true);
-    setFormData({ name: "", phone: "", email: "", message: "" });
+    setIsSubmitting(true);
     
-    // Hide thank you message after 3 seconds
-    setTimeout(() => {
-      setShowThankYou(false);
-    }, 3000);
+    try {
+      // Save form data to Firebase "leads" collection
+      const docRef = await addDoc(collection(db, "leads"), {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message,
+        timestamp: serverTimestamp(),
+        status: "new"
+      });
+      
+      console.log("Lead saved with ID: ", docRef.id);
+      
+      // Show success message
+      setShowThankYou(true);
+      setFormData({ name: "", phone: "", email: "", message: "" });
+      
+      // Hide thank you message after 3 seconds
+      setTimeout(() => {
+        setShowThankYou(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error("Error saving lead: ", error);
+      // You might want to show an error message to the user here
+      alert("There was an error submitting your form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <div className="min-h-screen bg-white">
@@ -133,6 +162,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faPhone} className="mr-1" />
                   Contact
                 </button>
+                
               </div>
             </div>
 
@@ -199,6 +229,15 @@ export default function Home() {
                 <FontAwesomeIcon icon={faPhone} className="mr-3" />
                 Contact
               </button>
+              {user && (
+                <a 
+                  href="/dashboard"
+                  className="hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors flex items-center text-black w-full text-left"
+                >
+                  <FontAwesomeIcon icon={faTachometerAlt} className="mr-3" />
+                  Dashboard
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -286,7 +325,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <Image
-                src="/1.png"
+                src="/5.png"
                 alt="Chandra Coaters Factory"
                 width={600}
                 height={400}
