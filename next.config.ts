@@ -8,15 +8,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@next/font'],
   },
 
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: 'https://www.chandracoaters.in',
-        permanent: true,
-      },
-    ];
-  },
+ 
 };
 
 export default nextConfig;
