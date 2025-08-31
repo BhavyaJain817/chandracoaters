@@ -141,7 +141,8 @@ export default function Home() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset transition-colors"
+                style={{ '--tw-ring-color': '#202938' } as React.CSSProperties}
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
@@ -228,14 +229,16 @@ export default function Home() {
                 {/* Carousel Navigation Buttons */}
                 <button
                   onClick={prevETPSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  style={{ color: '#202938' }}
                   aria-label="Previous slide"
                 >
                   <FontAwesomeIcon icon={faChevronLeft} className="text-xl" />
                 </button>
                 <button
                   onClick={nextETPSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                  style={{ color: '#202938' }}
                   aria-label="Next slide"
                 >
                   <FontAwesomeIcon icon={faChevronRight} className="text-xl" />
@@ -369,7 +372,7 @@ export default function Home() {
                     href="/Certificate Of Registration.pdf" 
           target="_blank"
           rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-light transition-colors"
+                    className="inline-flex items-center gap-2 text-white font-semibold py-3 px-6 rounded-lg transition-colors" style={{ backgroundColor: '#202938' }}
                   >
                     <span>📄</span>
                     View Certificate of Registration
@@ -745,16 +748,16 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center mt-8">
-            <div className="bg-primary text-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-2">Custom Industrial Applications</h3>
-              <p className="text-white/90">Specialized coating solutions for unique industrial requirements</p>
-            </div>
+                            <div className="text-white p-6 rounded-lg shadow-lg" style={{ backgroundColor: '#202938' }}>
+                  <h3 className="text-xl font-semibold mb-2">Custom Industrial Applications</h3>
+                  <p className="text-white/90">Specialized coating solutions for unique industrial requirements</p>
+                </div>
           </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 text-white" style={{ backgroundColor: '#202938' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6 font-heading">
             <FontAwesomeIcon icon={faAward} className="mr-2" />
@@ -772,9 +775,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-6 shadow-lg">
-              <FontAwesomeIcon icon={faPhone} className="text-3xl text-white" />
-            </div>
+                          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 shadow-lg" style={{ backgroundColor: '#202938' }}>
+                <FontAwesomeIcon icon={faPhone} className="text-3xl text-white" />
+              </div>
             <h2 className="text-5xl md:text-6xl font-bold text-primary mb-6 font-heading">
               Let's Start a <span className="text-secondary">Conversation</span>
             </h2>
@@ -791,14 +794,14 @@ export default function Home() {
               {/* Contact Information */}
               <div className="bg-neutral-light p-8 rounded-2xl shadow-xl border border-neutral-200">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style={{ backgroundColor: '#202938' }}>
                     <FontAwesomeIcon icon={faMapMarkerAlt} className="text-2xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-primary">Get In Touch</h3>
                 </div>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300" style={{ backgroundColor: 'rgba(32, 41, 56, 0.1)' }}>
                       <FontAwesomeIcon icon={faBuilding} className="text-lg text-primary group-hover:text-white" />
                     </div>
                     <div>
@@ -808,7 +811,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300" style={{ backgroundColor: 'rgba(32, 41, 56, 0.1)' }}>
                       <FontAwesomeIcon icon={faPhone} className="text-lg text-primary group-hover:text-white" />
                     </div>
                     <div>
@@ -817,7 +820,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300" style={{ backgroundColor: 'rgba(32, 41, 56, 0.1)' }}>
                       <FontAwesomeIcon icon={faEnvelope} className="text-lg text-primary group-hover:text-white" />
                     </div>
                     <div>
@@ -831,7 +834,7 @@ export default function Home() {
               {/* Business Hours */}
               <div className="bg-neutral-light p-8 rounded-2xl shadow-xl border border-neutral-200">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style={{ backgroundColor: '#202938' }}>
                     <FontAwesomeIcon icon={faClock} className="text-2xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-primary">Business Hours</h3>
@@ -852,7 +855,7 @@ export default function Home() {
             {/* Right Side - Contact Form */}
             <div className="bg-neutral-light p-8 rounded-2xl shadow-xl border border-neutral-200">
               <div className="flex items-center mb-8">
-                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4" style={{ backgroundColor: '#202938' }}>
                   <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-primary">Send Us a Message</h3>
@@ -943,11 +946,11 @@ export default function Home() {
               <h4 className="text-2xl font-bold text-primary mb-2">Ready to Get Started?</h4>
               <p className="text-neutral-dark mb-4">Join hundreds of satisfied customers who trust Chandra Coaters</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:9414014400" className="inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-colors">
+                <a href="tel:9414014400" className="inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg transition-colors" style={{ backgroundColor: '#202938' }}>
                   <FontAwesomeIcon icon={faPhone} className="mr-2" />
                   Call Now
                 </a>
-                <a href="mailto:chandracoaters@gmail.com" className="inline-flex items-center px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors">
+                <a href="mailto:chandracoaters@gmail.com" className="inline-flex items-center px-6 py-3 border-2 text-primary font-semibold rounded-lg hover:text-white transition-colors" style={{ borderColor: '#202938' }}>
                   <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                   Email Us
                 </a>
@@ -1063,7 +1066,7 @@ export default function Home() {
             </p>
             <button
               onClick={() => setShowThankYou(false)}
-              className="bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-primary-light transition-colors"
+                                className="text-white font-semibold py-2 px-6 rounded-lg transition-colors" style={{ backgroundColor: '#202938' }}
             >
               Close
             </button>
